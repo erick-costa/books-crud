@@ -7,6 +7,7 @@ type BooksStore = {
   loadBooks: () => Promise<void>
   addBook: (book: Book) => Promise<void>
   removeBook: (id: string) => Promise<void>
+  removeBooksByAuthor: (authorId: string) => Promise<void>
 }
 
 export const useBooksStore = create<BooksStore>((set) => ({
@@ -29,6 +30,12 @@ export const useBooksStore = create<BooksStore>((set) => ({
     await service.deleteBook(id)
     const data = await service.getBooks()
 
+    set({ books: data })
+  },
+
+  removeBooksByAuthor: async (authorId) => {
+    await service.deleteBooksByAuthor(authorId)
+    const data = await service.getBooks()
     set({ books: data })
   },
 }))

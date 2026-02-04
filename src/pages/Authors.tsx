@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { Button, Table, Typography, Space } from "antd"
 
 import { useAuthorsStore } from "../store/authors.store"
+import { useBooksStore } from "../store/books.store"
+
 import { ConfirmDelete } from "../components/shared/ConfirmDelete"
 
 import { AuthorFormModal } from "../components/authors/AuthorFormModal"
@@ -12,6 +14,7 @@ const { Title } = Typography
 
 export function AuthorsPage() {
   const { authors, loadAuthors, removeAuthor } = useAuthorsStore()
+  const { removeBooksByAuthor } = useBooksStore()
 
   const [createOpen, setCreateOpen] = useState(false)
   const [selectedAuthor, setSelectedAuthor] = useState<Author | null>(null)
@@ -43,7 +46,12 @@ export function AuthorsPage() {
                   Visualizar
                 </Button>
 
-                <ConfirmDelete onConfirm={() => removeAuthor(record.id)} />
+                <ConfirmDelete
+                  onConfirm={async () => {
+                    await removeBooksByAuthor(record.id)
+                    await removeAuthor(record.id)
+                  }}
+                />
               </Space>
             ),
           },

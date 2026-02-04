@@ -19,3 +19,12 @@ export async function deleteBook(id: string) {
     books.filter((book) => book.id !== id),
   )
 }
+
+export async function deleteBooksByAuthor(authorId: string) {
+  const books = await getBooks()
+
+  await db.setItem(
+    KEY,
+    books.filter((book) => book.author_id !== authorId),
+  )
+}
