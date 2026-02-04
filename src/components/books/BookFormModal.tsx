@@ -23,6 +23,7 @@ export function BookFormModal({ open, onClose }: BookFormModalProps) {
       name: values.name,
       author_id: values.author_id,
       pages: values.pages,
+      createdAt: new Date().toISOString(),
     })
 
     form.resetFields()

@@ -18,6 +18,7 @@ export function AuthorFormModal({ open, onClose }: AuthorFormModalProps) {
       id: uuid(),
       name: values.name,
       email: values.email,
+      createdAt: new Date().toISOString(),
     })
 
     form.resetFields()

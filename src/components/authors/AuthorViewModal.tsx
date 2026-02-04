@@ -1,4 +1,5 @@
 import { Modal, Descriptions } from "antd"
+import dayjs from "dayjs"
 import type { Author } from "../../types/author"
 
 type AuthorViewModalProps = {
@@ -20,6 +21,10 @@ export function AuthorViewModal({ author, onClose }: AuthorViewModalProps) {
           <Descriptions.Item label="Nome">{author.name}</Descriptions.Item>
           <Descriptions.Item label="Email">
             {author.email || "—"}
+          </Descriptions.Item>
+
+          <Descriptions.Item label="Criado em">
+            {dayjs(author.createdAt).format("DD/MM/YYYY HH:mm")}
           </Descriptions.Item>
         </Descriptions>
       )}

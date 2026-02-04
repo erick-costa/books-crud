@@ -1,6 +1,7 @@
 import { Modal, Descriptions } from "antd"
 import type { Book } from "../../types/book"
 import { useAuthorsStore } from "../../store/authors.store"
+import dayjs from "dayjs"
 
 type BookViewModalProps = {
   book: Book | null
@@ -28,6 +29,9 @@ export function BookViewModal({ book, onClose }: BookViewModalProps) {
         <Descriptions.Item label="Autor">{authorName}</Descriptions.Item>
         <Descriptions.Item label="Páginas">
           {book.pages || "—"}
+        </Descriptions.Item>
+        <Descriptions.Item label="Criado em">
+          {dayjs(book.createdAt).format("DD/MM/YYYY HH:mm")}
         </Descriptions.Item>
       </Descriptions>
     </Modal>
