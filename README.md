@@ -1,73 +1,75 @@
-# React + TypeScript + Vite
+# 📚 Books CRUD
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto foi desenvolvido como parte de um **teste técnico frontend**, proposto pela empresa **Contato Seguro**, utilizando **React 18 + TypeScript**, com foco em organização de código, clareza de regras de negócio e boa experiência de uso.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tecnologias utilizadas
 
-## React Compiler
+- **React 18**
+- **TypeScript**
+- **Vite**
+- **Ant Design** para lidar com UI
+- **localForage** para gerenciamento dos dados localmente no IndexedDB
+- **DayJS** para lidar com datas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🧩 Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Autores
+- Criar autor
+- Visualizar autor em **modal dedicado**
+- Excluir autor  
+  - ⚠️ Ao excluir um autor, **todos os livros associados a ele também são removidos**
+- Exibição da **data de criação** no modal de visualização
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Livros
+- Criar livro vinculado a um autor
+- Visualizar livro em **modal dedicado**
+- Excluir livro
+- Exibição da **data de criação** no modal de visualização
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🪟 Modais
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- A aplicação utiliza **dois modais distintos**:
+  - Modal de **criação**
+  - Modal de **visualização**
+- Isso garante uma melhor separação de responsabilidades e melhora a experiência do usuário.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🎨 Estilização
+
+A estilização foi pensada para ser:
+- Simples
+- Limpa
+- Funcional
+
+Com foco em:
+- Boa hierarquia visual
+- Clareza das ações (criar, visualizar, excluir)
+- Facilidade de manutenção
+
+Por isso, a utilização do Ant Design atendeu bem o projeto.
+
+---
+
+## 🧠 Decisões técnicas
+
+- Optei por **TypeScript**, por já ser a tecnologia que utilizo no meu dia a dia e por trazer mais segurança, legibilidade e manutenção ao código.
+- A exclusão em cascata (autor → livros) foi implementada para manter **consistência dos dados**.
+- As datas de criação são geradas automaticamente no momento do cadastro, garantindo rastreabilidade.
+
+---
+
+## ⚙️ Como rodar o projeto
+
+```bash
+# instalar dependências
+npm install
+
+# rodar o projeto
+npm run dev
