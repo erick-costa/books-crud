@@ -18,6 +18,7 @@ export function BookViewModal({ book, onClose }: BookViewModalProps) {
 
   return (
     <Modal
+      centered
       title="Detalhes do Livro"
       open={!!book}
       onCancel={onClose}

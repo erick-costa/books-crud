@@ -10,6 +10,7 @@ type AuthorViewModalProps = {
 export function AuthorViewModal({ author, onClose }: AuthorViewModalProps) {
   return (
     <Modal
+      centered
       title="Detalhes do Autor"
       open={!!author}
       onCancel={onClose}

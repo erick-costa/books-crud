@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Button, Table, Typography, Space } from "antd"
+import { Button, Table, Typography, Space, Row, Col, message } from "antd"
 
 import { useBooksStore } from "../store/books.store"
 import { useAuthorsStore } from "../store/authors.store"
@@ -9,6 +9,8 @@ import { BookFormModal } from "../components/books/BookFormModal"
 import { BookViewModal } from "../components/books/BookViewModal"
 
 import type { Book } from "../types/book"
+
+import { EyeOutlined } from "@ant-design/icons"
 
 const { Title } = Typography
 
@@ -26,15 +28,16 @@ export function BooksPage() {
 
   return (
     <div>
-      <Title level={3}>Livros</Title>
-
-      <Button
-        type="primary"
-        onClick={() => setCreateOpen(true)}
-        disabled={authors.length === 0}
-      >
-        Novo Livro
-      </Button>
+      <Row justify="space-between" align="middle">
+        <Col>
+          <Title level={4}>Livros</Title>
+        </Col>
+        <Col>
+          <Button type="primary" onClick={() => setCreateOpen(true)}>
+            Novo Livro
+          </Button>
+        </Col>
+      </Row>
 
       {authors.length === 0 && (
         <p style={{ marginTop: 10 }}>
@@ -44,8 +47,19 @@ export function BooksPage() {
 
       <Table
         style={{ marginTop: 20 }}
+        size="middle"
+        bordered
+        pagination={{ pageSize: 5 }}
         dataSource={books}
         rowKey="id"
+        locale={{
+          emptyText: (
+            <div style={{ padding: 32, textAlign: "center" }}>
+              <Title level={5}>Nenhum livro cadastrado</Title>
+              <p>Clique em “Novo Livro” para começar</p>
+            </div>
+          ),
+        }}
         columns={[
           { title: "Nome", dataIndex: "name" },
           {
@@ -58,17 +72,22 @@ export function BooksPage() {
             title: "Ações",
             render: (_, record) => (
               <Space>
-                <Button onClick={() => setSelectedBook(record)}>
-                  Visualizar
-                </Button>
-                <ConfirmDelete onConfirm={() => removeBook(record.id)} />
+                <Button
+                  icon={<EyeOutlined />}
+                  onClick={() => setSelectedBook(record)}
+                />
+                <ConfirmDelete
+                  onConfirm={() => {
+                    removeBook(record.id)
+                    message.success("Livro removido com sucesso")
+                  }}
+                />
               </Space>
             ),
           },
         ]}
       />
 
-      {/* MODAIS */}
       <BookFormModal open={createOpen} onClose={() => setCreateOpen(false)} />
 
       <BookViewModal

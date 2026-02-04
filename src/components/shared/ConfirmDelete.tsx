@@ -1,4 +1,5 @@
 import { Popconfirm, Button } from "antd"
+import { DeleteOutlined } from "@ant-design/icons"
 
 type ConfirmDeleteProps = {
   onConfirm: () => void
@@ -12,7 +13,7 @@ export function ConfirmDelete({ onConfirm }: ConfirmDeleteProps) {
       cancelText="Cancelar"
       onConfirm={onConfirm}
     >
-      <Button danger>Excluir</Button>
+      <Button danger icon={<DeleteOutlined />} />
     </Popconfirm>
   )
 }

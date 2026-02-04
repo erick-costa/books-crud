@@ -1,6 +1,7 @@
 import { Modal, Form, Input } from "antd"
 import { useAuthorsStore } from "../../store/authors.store"
 import { v4 as uuid } from "uuid"
+import { message } from "antd"
 
 type AuthorFormModalProps = {
   open: boolean
@@ -21,12 +22,15 @@ export function AuthorFormModal({ open, onClose }: AuthorFormModalProps) {
       createdAt: new Date().toISOString(),
     })
 
+    message.success("Autor criado com sucesso")
+
     form.resetFields()
     onClose()
   }
 
   return (
     <Modal
+      centered
       title="Criar Autor"
       open={open}
       onCancel={onClose}
@@ -34,7 +38,7 @@ export function AuthorFormModal({ open, onClose }: AuthorFormModalProps) {
       okText="Salvar"
       cancelText="Cancelar"
     >
-      <Form layout="vertical" form={form}>
+      <Form layout="vertical" form={form} requiredMark={false}>
         <Form.Item
           label="Nome"
           name="name"

@@ -1,4 +1,4 @@
-import { Modal, Form, Input, InputNumber, Select } from "antd"
+import { Modal, Form, Input, InputNumber, Select, message } from "antd"
 import { v4 as uuid } from "uuid"
 
 import { useBooksStore } from "../../store/books.store"
@@ -26,12 +26,15 @@ export function BookFormModal({ open, onClose }: BookFormModalProps) {
       createdAt: new Date().toISOString(),
     })
 
+    message.success("Livro criado com sucesso")
+
     form.resetFields()
     onClose()
   }
 
   return (
     <Modal
+      centered
       title="Criar Livro"
       open={open}
       onCancel={onClose}
