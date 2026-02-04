@@ -18,7 +18,7 @@ export function AuthorsPage() {
 
   useEffect(() => {
     loadAuthors()
-  }, [])
+  }, [loadAuthors])
 
   return (
     <div>
