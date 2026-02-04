@@ -1,7 +1,24 @@
-import "./App.css"
+import { Tabs } from "antd"
+import { AuthorsPage } from "./pages/Authors"
+import { BooksPage } from "./pages/Books"
 
-function App() {
-  return <div>Hello World!</div>
+export default function App() {
+  return (
+    <div style={{ padding: 24 }}>
+      <Tabs
+        items={[
+          {
+            key: "authors",
+            label: "Autores",
+            children: <AuthorsPage />,
+          },
+          {
+            key: "books",
+            label: "Livros",
+            children: <BooksPage />,
+          },
+        ]}
+      />
+    </div>
+  )
 }
-
-export default App
