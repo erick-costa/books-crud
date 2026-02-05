@@ -32,31 +32,6 @@ Este projeto foi desenvolvido como parte de um **teste técnico frontend**, prop
 
 ---
 
-## 🪟 Modais
-
-- A aplicação utiliza **dois modais distintos**:
-  - Modal de **criação**
-  - Modal de **visualização**
-- Isso garante uma melhor separação de responsabilidades e melhora a experiência do usuário.
-
----
-
-## 🎨 Estilização
-
-A estilização foi pensada para ser:
-- Simples
-- Limpa
-- Funcional
-
-Com foco em:
-- Boa hierarquia visual
-- Clareza das ações (criar, visualizar, excluir)
-- Facilidade de manutenção
-
-Por isso, a utilização do Ant Design atendeu bem o projeto.
-
----
-
 ## 🧠 Decisões técnicas
 
 - Optei por **TypeScript**, por já ser a tecnologia que utilizo no meu dia a dia e por trazer mais segurança, legibilidade e manutenção ao código.
