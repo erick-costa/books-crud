@@ -18,13 +18,15 @@ Este projeto foi desenvolvido como parte de um **teste técnico frontend**, prop
 ## 🧩 Funcionalidades
 
 ### Autores
+
 - Criar autor
 - Visualizar autor em **modal dedicado**
-- Excluir autor  
+- Excluir autor
   - ⚠️ Ao excluir um autor, **todos os livros associados a ele também são removidos**
 - Exibição da **data de criação** no modal de visualização
 
 ### Livros
+
 - Criar livro vinculado a um autor
 - Visualizar livro em **modal dedicado**
 - Excluir livro
@@ -40,11 +42,26 @@ Este projeto foi desenvolvido como parte de um **teste técnico frontend**, prop
 
 ---
 
-## ⚙️ Como rodar o projeto
+## ⚙️ Como rodar o projeto (Docker)
+
+### Pré-requisitos
+
+- Docker Desktop instalado e em execução
+
+### Passos para execução
 
 ```bash
-# instalar dependências
-npm install
+docker compose up --build
+```
 
-# rodar o projeto
-npm run dev
+Após a finalização do build, a aplicação estará disponível em:
+
+```bash
+http://localhost:5173
+```
+
+### Encerrar a execução
+
+```bash
+docker compose down
+```
